@@ -1,42 +1,53 @@
 /*
  * Centerimg- jQuery plugin for create image centering block
  *
- * Copyright (c) 2012 suisho
- *
  * Licensed under the MIT license:
  *   http://www.opensource.org/licenses/mit-license.php
  *
- * Version:  1.7.2
+ * Project home:
+ *   https://github.com/suisho/jquery.centerimg
  *
+ * jQuery Version:  1.7.2
  */
 (function($, window) {
   $window = $(window);
   $.fn.centerimg = function(options) {
+    var setting = $.extend({
+      parentClass : "",
+      linkClass : ""
+    }, options || {});
     this.each(function(){
       var self = this;
       var _w = $(self).data("width") || 100;
+      _w = _w+"px";
       var _h = $(self).data("height") || 100;
-      var link = $(self).data("link");
+      _h = _h+"px";
+      var link = $(self).data("link") || "";
       var src = $(self).data("src") || $(self).attr("src");
-      var $parentDiv = $("<div>").css({
-        width : _w,
-        height : _h
-      });
-      var $cover;
-      if(link){
-        $cover = $("<a>").attr("href",link);
-      }else{
-        $cover = $("<span>");
-      }
-      $cover.css({
+      var _parentClass = $(self).data("parent-class") || setting.parentClass;
+      var _linkClass = $(self).data("link-class") || setting.linkClass;
+
+      //create parent div
+      var $parent = $("<div>").css({
         "width" : _w,
         "height" : _h,
-        "line-height" : _h,
+      }).addClass("_parentClass");
+
+      //create link tag
+      var $link = $("<a>").css({
+        "width" : _w,
+        "height" : _h,
         "display" : "block",
         "vertical-align" : "middle",
         "text-align" : "center",
-        "text-decoration" : "none"
-      })
+        "text-decoration" : "none",
+        "outline" : "none",
+      }).addClass("_linkClass");
+      if(link){
+        $link.attr("href",link);
+      }
+
+      //clone image tag
       var $img = $(self).clone(true);
       if(src){
         $img.attr("src",src);
@@ -45,9 +56,11 @@
         "max-height" : _h,
         "max-width" : _w,
         "line-height" : _h,
-        "display" : "inline",
-        "vertical-align" : "middle"
+        "vertical-align" : "middle",
+        "border" : "none" // for ie
       });
+
+      //create spring
       var $spling = $("<span>").css({
         "height" : _h,
         "display" : "inline-block",
@@ -57,10 +70,14 @@
         "overflow" : "hidden",
         "vertical-align" : "middle"
       });
-      $cover.append($img);
-      $cover.append($spling);
-      $parentDiv.append($cover);
-      $(self).replaceWith($parentDiv);
+
+      //struct div
+      $link.append($img);
+      $link.append($spling);
+      $parent.append($link);
+
+      //replace img tag
+      $(self).replaceWith($parent);
     })
   }
 })(jQuery, window);

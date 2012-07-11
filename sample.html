@@ -2,9 +2,14 @@
   <body>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="jquery.centerimg.js"></script>
+
     <h1>Sample</h1>
     <h3>Normal(landscape 100 * 100)</h3>
+
     <img class="centerimg" src="landscape.png" data-link="" data-width="100" data-height="100">
+    <div style="border: 1px solid black;width:100px;height: 100px; padding:0;margin:0">
+      <img class="centerimg" data-src="portrait.png" data-width="100" data-height="100">
+    </div>
     <h3>Set link(portlate 100 * 100)</h3>
     <div style="border: 1px solid black;width:100px">
       <img class="centerimg" data-src="portrait.png" data-link="http://google.com" data-width="100" data-height="100">
