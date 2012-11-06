@@ -37,6 +37,7 @@
       var $link = $("<a>").css({
         "width" : _w,
         "height" : _h,
+        "font-size" : 0,
         "display" : "block",
         "vertical-align" : "middle",
         "text-align" : "center",
