@@ -31,7 +31,7 @@
       var $parent = $("<div>").css({
         "width" : _w,
         "height" : _h,
-      }).addClass("_parentClass");
+      }).addClass(_parentClass);
 
       //create link tag
       var $link = $("<a>").css({
@@ -43,7 +43,7 @@
         "text-align" : "center",
         "text-decoration" : "none",
         "outline" : "none",
-      }).addClass("_linkClass");
+      }).addClass(_linkClass);
       if(link){
         $link.attr("href",link);
       }

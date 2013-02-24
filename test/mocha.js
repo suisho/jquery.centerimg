@@ -10,7 +10,16 @@ describe('jquery', function () {
     it(title, function () {
       // execute plugin
       $(target).find(".input .centerimg").centerimg();
-      assertHtml($(target))
+      var input = formatHtml($(target).find(".input"))
+      var expect = formatHtml($(target).find(".expect"))
+      
+      var result = (input) == (expect)
+      if (result){
+        $(target).addClass("success")
+      }else{
+        $(target).addClass("failed")
+        throw new Error(title + ' dom HTML is not equal\n' + expect+"\n"+ input);
+      }
     });
   });
 });
