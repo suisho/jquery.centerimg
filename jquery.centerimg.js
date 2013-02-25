@@ -18,10 +18,13 @@
     }, options || {});
     this.each(function(){
       var self = this;
-      var _w = $(self).data("width") || 100;
-      _w = _w+"px";
-      var _h = $(self).data("height") || 100;
-      _h = _h+"px";
+      
+      var _w = parseInt($(self).data("width")) || 100;
+      _w = _w + "px";
+      
+      var _h = parseInt($(self).data("height")) || 100;
+      _h = _h + "px";
+      
       var link = $(self).data("link") || "";
       var src = $(self).data("src") || $(self).attr("src");
       var _parentClass = $(self).data("parent-class") || setting.parentClass;
