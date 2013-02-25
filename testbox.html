@@ -2,7 +2,6 @@
   <script type="text/javascript" src="https://raw.github.com/visionmedia/mocha/master/mocha.js"></script>
   <link  rel="stylesheet" href="https://raw.github.com/visionmedia/mocha/master/mocha.css"></script>
   <style>
-  
     .testset.success .input > div,
     .testset.success .expect > div{
       border : 1px green solid;
@@ -14,24 +13,18 @@
   </style>
   
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="https://raw.github.com/Jxck/assert/master/assert.js"></script>
   
   <!--
   <script type="text/javascript" src="http://chaijs.com/chai.js"></script>
   var should = chai.should();
   <script type="text/javascript" src="https://raw.github.com/chaijs/chai-jquery/master/chai-jquery.js"></script>
   -->
-
+  <script type="text/javascript" src="https://jquery-list-attributes.googlecode.com/files/jquery.mapAttributes.js"></script>
   <script type="text/javascript" src="jquery.centerimg.js"></script>
   <script type="text/javascript">
     mocha.setup("bdd")
 
-    function formatHtml(target){
-      var html = target.html()
-      html = html.replace(/^\s+/g,"");
-      html = html.replace(/\n\s+/g,"");
-      html = html.replace(/\n/g,"");
-      return html
-    }
   </script>
   <div id="mocha"></div>
   <div id="template" class="testset">
@@ -43,7 +36,7 @@
   </div>
   
   
-  <div id="normal_test" class="testset">
+  <div class="testset">
     <h1 class="title">Normal test<h1>
     <div class="input">
       <img class="centerimg"
@@ -63,7 +56,7 @@
   </div>
   
   
-  <div id="template" class="testset">
+  <div class="testset">
     <h1 class="title">Link test<h1>
     <div class="input">
       <img class="centerimg"
@@ -82,7 +75,7 @@
     </div>
   </div>
   
-  <div id="template" class="testset">
+  <div class="testset">
     <h1 class="title">Parent class Test<h1>
     <div class="input">
        <img class="centerimg"
