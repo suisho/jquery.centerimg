@@ -49,7 +49,6 @@
       }
       console.log(title);
       it(title, function () {
-        
         console.log("Start:"+title);
         // execute plugin
         $(target).find(".input .centerimg").centerimg();

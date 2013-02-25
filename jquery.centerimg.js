@@ -25,19 +25,39 @@
       var _h = parseInt($(self).data("height")) || 100;
       _h = _h + "px";
       
-      var link = $(self).data("link") || "";
+      var link = $(self).data("link") || null;
       var src = $(self).data("src") || $(self).attr("src");
       var _parentClass = $(self).data("parent-class") || setting.parentClass;
       var _linkClass = $(self).data("link-class") || setting.linkClass;
-
+      var $parent, $link, $img;
+      
+      //create link (or span)tag
+      $parent = $("<div>");
+      $link = (link) ? $("<a>") :  $("<span>") ;
+      $img = $(self).clone(true);
+      
+      var selfTagName = $(self).prop("tagName")
+      if(selfTagName != "IMG"){
+        $img = $(self).find("img").clone(true);
+        switch(selfTagName){
+          case "A":
+            $link = $(self).clone(true)
+            $link.empty()
+            break;
+          default:
+            $parent = $(self).clone(true)
+            $parent.empty(); //TODO check event bind
+            break;
+        }
+      }
+      
       //create parent div
-      var $parent = $("<div>").css({
+      $parent = $parent.css({
         "width" : _w,
         "height" : _h,
       }).addClass(_parentClass);
 
-      //create link tag
-      var $link = $("<a>").css({
+      $link.css({
         "width" : _w,
         "height" : _h,
         "font-size" : 0,
@@ -52,7 +72,6 @@
       }
 
       //clone image tag
-      var $img = $(self).clone(true);
       if(src){
         $img.attr("src",src);
       }
